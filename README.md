@@ -29,8 +29,9 @@ You can edit the `request.json`file to experiment with different latency setting
 #Troubleshooting
 
 ## Start With A Clean Slate
-If you are having problems spinning up the container, you can clean up your system by removing all current cotainers and images.  Run 
-`./nuke-containers-and-images.sh` to remove Docker containers and images.  **WARNING:** this cannot be undone and is a rather drastic measure.
+If you are having problems spinning up the containers, you might want to scrub your system.  Run 
+`./nuke-containers-and-images.sh` to remove Docker containers and images.  **WARNING:** this cannot be undone, is a rather drastic 
+measure but usually yields positive results.
 
 
 #License and Credits
