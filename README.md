@@ -19,27 +19,19 @@ To start the environment, run `./start.sh`.  That will pull down the Docker imag
 #Tips and Tricks
 
 ##Verifying The Setup
-There is a simple script that you can launch that will send a hand full of requests to the server. Execute `bin/send-request.sh` to run it.
-You can edit the `bin/request.json` to experiment with different latency settings.  Valid values include `fast`, `normal` and `slow`.
+The API Gateway application can respond to health checks and report back whether or not connectivity is available to its required services.  Run
+`./check-health.sh` to check on status of the various resources.
 
-##Health Check
-The application can respond to health checks and report back whether or not connectivity is available to its required services.  Run
-`bin/check-health.sh` to check on the application's status. This can be used to verify the configuration settings for RabbitMQ and PostgreSQL are
-correct.
-
-##Use Docker
-There is a [companion project](https://github.com/kurron/docker-monitor-postgresql) that wraps the application into a Docker container and is
-probably a more convenient way to launch the application.
-
-##Configuration
-The application's configuration settings are controlled via `src/main/resources/config/application.yml`.  You can change the values and rebuild
-the application, if desired.  A simpler way is to override those settings at application launch time.  For example:
-
-```bash
-$JAVA_HOME/bin/java -jar build/libs/monitor-postgresql-0.0.0-RELEASE.jar --server.port=1234 --spring.rabbitmq.host=192.168.1.10
-```
+##Push Requests Through The Sytem
+There is a simple script that you can launch that will send a hand full of requests to the server. Execute `./send-request.sh` to run it.
+You can edit the `request.json`file to experiment with different latency settings.  Valid values include `fast`, `normal` and `slow`.
 
 #Troubleshooting
+
+## Start With A Clean Slate
+If you are having problems spinning up the container, you can clean up your system by removing all current cotainers and images.  Run 
+`./nuke-containers-and-images.sh` to remove Docker containers and images.  **WARNING:** this cannot be undone and is a rather drastic measure.
+
 
 #License and Credits
 This project is licensed under the [Apache License Version 2.0, January 2004](http://www.apache.org/licenses/).
