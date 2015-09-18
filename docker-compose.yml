@@ -95,42 +95,42 @@ postgresql:
       POSTGRES_PASSWORD: postgres
 
 rabbitmq-service:
-  image: kurron/monitor-rabbitmq:latest
+  image: kurron/docker-monitor-rabbitmq:latest
   container_name: rabbitmq-service
   ports:
       - "8500:8500"
   net: host
 
 postresql-service:
-  image: kurron/monitor-postgresql:latest 
+  image: kurron/docker-monitor-postgresql:latest
   container_name: postgresql-service
   ports:
       - "8400:8400"
   net: host
 
 mysql-service:
-  image: kurron/monitor-mysql:latest 
+  image: kurron/docker-monitor-mysql:latest
   container_name: mysql-service
   ports:
       - "8300:8300"
   net: host
 
 redis-service:
-  image: kurron/monitor-redis:latest 
+  image: kurron/docker-monitor-redis:latest
   container_name: redis-service
   ports:
       - "8200:8200"
   net: host
 
 mongodb-service:
-  image: kurron/monitor-mongodb:latest 
+  image: kurron/docker-monitor-mongodb:latest
   container_name: mongodb-service
   ports:
       - "8100:8100"
   net: host
 
 api-gateway-service:
-  image: kurron/monitor-api-gateway:latest 
+  image: kurron/docker-monitor-api-gateway:latest
   container_name: api-gateway-service
   ports:
       - "8000:8000"
