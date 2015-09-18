@@ -1,0 +1,90 @@
+mongodb-data:
+  image: busybox
+  container_name: mongodb-data 
+  volumes:
+      - /data/db 
+
+mongodb:
+  image: mongo
+  container_name: mongodb
+  hostname: mongodb
+  volumes_from:
+      - mongodb-data
+  restart: always
+  ports:
+      - "27017:27017"
+  command: mongod --storageEngine=wiredTiger --notablescan --journalCommitInterval=300 --directoryperdb 
+
+mysql-data:
+  image: busybox
+  container_name: mysql-data 
+  volumes:
+      - /var/lib/mysql 
+      - /etc/mysql/conf.d 
+
+mysql:
+  image: mysql
+  container_name: mysql
+  hostname: mysql
+  volumes_from:
+      - mysql-data
+  restart: always
+  ports:
+      - "3306:3306"
+  environment:
+      MYSQL_ROOT_PASSWORD: sa
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+      MYSQL_DATABASE: monitor
+
+rabbitmq-data:
+  image: busybox
+  container_name: rabbitmq-data 
+  volumes:
+      - /var/lib/rabbitmq 
+
+rabbitmq:
+  image: rabbitmq:management
+  container_name: rabbitmq
+  hostname: rabbitmq
+  volumes_from:
+      - rabbitmq-data
+  restart: always
+  ports:
+      - "5672:5672"
+      - "15672:15672"
+
+redis-data:
+  image: busybox
+  container_name: redis-data
+  volumes:
+      - /data
+
+redis:
+  image: redis 
+  container_name: redis
+  hostname: redis
+  volumes_from:
+      - redis-data
+  restart: always
+  ports:
+      - "6379:6379"
+
+postgresql-data:
+  image: busybox
+  container_name: postgresql-data
+  volumes:
+      - /var/lib/postgresql/data 
+
+postgresql:
+  image: postgres
+  container_name: postgresql
+  hostname: postgresql
+  volumes_from:
+      - postgresql-data
+  restart: always
+  ports:
+      - "5432:5432"
+  environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
