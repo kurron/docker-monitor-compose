@@ -141,3 +141,8 @@ api-gateway-service:
       - "8000:8000"
   net: host
 
+mysql-plugin:
+  image: kurron/docker-monitor-newrelic-mysql-plugin
+  container_name: mysql-plugin
+  net: host
+
