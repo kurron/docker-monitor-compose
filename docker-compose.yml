@@ -14,7 +14,7 @@ mongodb:
   ports:
       - "27017:27017"
   net: host
-  command: mongod --storageEngine=wiredTiger --notablescan --journalCommitInterval=300 --directoryperdb 
+  command: mongod --storageEngine=wiredTiger --wiredTigerCacheSizeGB=1 --notablescan --journalCommitInterval=300 --directoryperdb 
 
 mysql-data:
   image: busybox
