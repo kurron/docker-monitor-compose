@@ -46,7 +46,8 @@ rabbitmq-data:
       - /var/lib/rabbitmq 
 
 rabbitmq:
-  image: rabbitmq:management
+  # this image uses smaller memory values than the default configuration does
+  image: kurron/docker-rabbitmq 
   container_name: rabbitmq
   hostname: rabbitmq
   volumes_from:
