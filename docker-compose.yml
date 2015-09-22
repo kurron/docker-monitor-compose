@@ -146,3 +146,8 @@ mysql-plugin:
   container_name: mysql-plugin
   net: host
 
+pivotal-plugin:
+  image: kurron/docker-monitor-newrelic-pivotal-plugin
+  container_name: pivotal-plugin
+  net: host
+
