@@ -153,3 +153,8 @@ pivotal-plugin:
   container_name: pivotal-plugin
   net: host
 
+mongodb-plugin:
+  image: kurron/docker-monitor-newrelic-mongodb-plugin
+  container_name: mongodb-plugin
+  net: host
+
