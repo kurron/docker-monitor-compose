@@ -57,6 +57,8 @@ rabbitmq:
       - "5672:5672"
       - "15672:15672"
   net: host
+  # limit RabbitMQ to 1GB of RAM or it will steal 40% of available memory
+  mem_limit: 1000000000
   environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
