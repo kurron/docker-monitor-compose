@@ -107,13 +107,17 @@ rabbitmq-service:
   ports:
       - "8500:8500"
   net: host
+  environment:
+      NEW_RELIC_APP_NAME: rabbitmq-service
 
-postresql-service:
+postgresql-service:
   image: kurron/docker-monitor-postgresql:latest
   container_name: postgresql-service
   ports:
       - "8400:8400"
   net: host
+  environment:
+      NEW_RELIC_APP_NAME: postgresql-service
 
 mysql-service:
   image: kurron/docker-monitor-mysql:latest
@@ -121,6 +125,8 @@ mysql-service:
   ports:
       - "8300:8300"
   net: host
+  environment:
+      NEW_RELIC_APP_NAME: mysql-service
 
 redis-service:
   image: kurron/docker-monitor-redis:latest
@@ -128,6 +134,8 @@ redis-service:
   ports:
       - "8200:8200"
   net: host
+  environment:
+      NEW_RELIC_APP_NAME: redis-service
 
 mongodb-service:
   image: kurron/docker-monitor-mongodb:latest
@@ -135,6 +143,8 @@ mongodb-service:
   ports:
       - "8100:8100"
   net: host
+  environment:
+      NEW_RELIC_APP_NAME: mongodb-service
 
 api-gateway-service:
   image: kurron/docker-monitor-api-gateway:latest
@@ -142,6 +152,8 @@ api-gateway-service:
   ports:
       - "8000:8000"
   net: host
+  environment:
+      NEW_RELIC_APP_NAME: api-gateway-service
 
 mysql-plugin:
   image: kurron/docker-monitor-newrelic-mysql-plugin
