@@ -14,6 +14,7 @@ mongodb:
   ports:
       - "27017:27017"
   net: host
+  log_driver: "syslog"
   command: mongod --storageEngine=wiredTiger --wiredTigerCacheSizeGB=1 --notablescan --journalCommitInterval=300 --directoryperdb 
 
 mysql-data:
@@ -33,6 +34,7 @@ mysql:
   ports:
       - "3306:3306"
   net: host
+  log_driver: "syslog"
   environment:
       MYSQL_ROOT_PASSWORD: sa
       MYSQL_USER: mysql
@@ -57,6 +59,7 @@ rabbitmq:
       - "5672:5672"
       - "15672:15672"
   net: host
+  log_driver: "syslog"
   # limit RabbitMQ to 1GB of RAM or it will steal 40% of available memory
   mem_limit: 1000000000
   environment:
@@ -80,6 +83,7 @@ redis:
   ports:
       - "6379:6379"
   net: host
+  log_driver: "syslog"
 
 postgresql-data:
   image: busybox
@@ -97,6 +101,7 @@ postgresql:
   ports:
       - "5432:5432"
   net: host
+  log_driver: "syslog"
   environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -116,6 +121,7 @@ postgresql-service:
   ports:
       - "8400:8400"
   net: host
+  log_driver: "syslog"
   environment:
       NEW_RELIC_APP_NAME: postgresql-service
 
@@ -125,6 +131,7 @@ mysql-service:
   ports:
       - "8300:8300"
   net: host
+  log_driver: "syslog"
   environment:
       NEW_RELIC_APP_NAME: mysql-service
 
@@ -134,6 +141,7 @@ redis-service:
   ports:
       - "8200:8200"
   net: host
+  log_driver: "syslog"
   environment:
       NEW_RELIC_APP_NAME: redis-service
 
@@ -143,6 +151,7 @@ mongodb-service:
   ports:
       - "8100:8100"
   net: host
+  log_driver: "syslog"
   environment:
       NEW_RELIC_APP_NAME: mongodb-service
 
@@ -152,6 +161,7 @@ api-gateway-service:
   ports:
       - "8000:8000"
   net: host
+  log_driver: "syslog"
   environment:
       NEW_RELIC_APP_NAME: api-gateway-service
 
@@ -159,14 +169,17 @@ mysql-plugin:
   image: kurron/docker-monitor-newrelic-mysql-plugin
   container_name: mysql-plugin
   net: host
+  log_driver: "syslog"
 
 pivotal-plugin:
   image: kurron/docker-monitor-newrelic-pivotal-plugin
   container_name: pivotal-plugin
   net: host
+  log_driver: "syslog"
 
 mongodb-plugin:
   image: kurron/docker-monitor-newrelic-mongodb-plugin
   container_name: mongodb-plugin
   net: host
+  log_driver: "syslog"
 
