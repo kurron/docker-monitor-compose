@@ -162,6 +162,11 @@ api-gateway-service:
       - "8000:8000"
   net: host
   log_driver: "syslog"
+  log_opt:
+    syslog-address: udp://localhost:1234
+    syslog-facility: daemon
+    syslog-tag: "api-gateway"
+
   environment:
       NEW_RELIC_APP_NAME: api-gateway-service
 
