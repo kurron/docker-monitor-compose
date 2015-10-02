@@ -15,6 +15,10 @@ mongodb:
       - "27017:27017"
   net: host
   log_driver: "syslog"
+  log_opt:
+#   syslog-address: udp://localhost:1234
+    syslog-facility: daemon
+    syslog-tag: "MongoDB"
   command: mongod --storageEngine=wiredTiger --wiredTigerCacheSizeGB=1 --notablescan --journalCommitInterval=300 --directoryperdb 
 
 mysql-data:
@@ -35,6 +39,10 @@ mysql:
       - "3306:3306"
   net: host
   log_driver: "syslog"
+  log_opt:
+#   syslog-address: udp://localhost:1234
+    syslog-facility: daemon
+    syslog-tag: "MySQL"
   environment:
       MYSQL_ROOT_PASSWORD: sa
       MYSQL_USER: mysql
@@ -60,6 +68,10 @@ rabbitmq:
       - "15672:15672"
   net: host
   log_driver: "syslog"
+  log_opt:
+#   syslog-address: udp://localhost:1234
+    syslog-facility: daemon
+    syslog-tag: "RabbitMQ"
   # limit RabbitMQ to 1GB of RAM or it will steal 40% of available memory
   mem_limit: 1000000000
   environment:
@@ -84,6 +96,10 @@ redis:
       - "6379:6379"
   net: host
   log_driver: "syslog"
+  log_opt:
+#   syslog-address: udp://localhost:1234
+    syslog-facility: daemon
+    syslog-tag: "Redis"
 
 postgresql-data:
   image: busybox
@@ -102,6 +118,10 @@ postgresql:
       - "5432:5432"
   net: host
   log_driver: "syslog"
+  log_opt:
+#   syslog-address: udp://localhost:1234
+    syslog-facility: daemon
+    syslog-tag: "PostgreSQL"
   environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -112,6 +132,11 @@ rabbitmq-service:
   ports:
       - "8500:8500"
   net: host
+  log_driver: "syslog"
+  log_opt:
+#   syslog-address: udp://localhost:1234
+    syslog-facility: daemon
+    syslog-tag: "rabbitmq-service"
   environment:
       NEW_RELIC_APP_NAME: rabbitmq-service
 
@@ -122,6 +147,10 @@ postgresql-service:
       - "8400:8400"
   net: host
   log_driver: "syslog"
+  log_opt:
+#   syslog-address: udp://localhost:1234
+    syslog-facility: daemon
+    syslog-tag: "postgresql-service"
   environment:
       NEW_RELIC_APP_NAME: postgresql-service
 
@@ -132,6 +161,10 @@ mysql-service:
       - "8300:8300"
   net: host
   log_driver: "syslog"
+  log_opt:
+#   syslog-address: udp://localhost:1234
+    syslog-facility: daemon
+    syslog-tag: "mysql-service"
   environment:
       NEW_RELIC_APP_NAME: mysql-service
 
@@ -142,6 +175,10 @@ redis-service:
       - "8200:8200"
   net: host
   log_driver: "syslog"
+  log_opt:
+#   syslog-address: udp://localhost:1234
+    syslog-facility: daemon
+    syslog-tag: "redis-service"
   environment:
       NEW_RELIC_APP_NAME: redis-service
 
@@ -152,6 +189,10 @@ mongodb-service:
       - "8100:8100"
   net: host
   log_driver: "syslog"
+  log_opt:
+#   syslog-address: udp://localhost:1234
+    syslog-facility: daemon
+    syslog-tag: "mongodb-service"
   environment:
       NEW_RELIC_APP_NAME: mongodb-service
 
@@ -163,7 +204,7 @@ api-gateway-service:
   net: host
   log_driver: "syslog"
   log_opt:
-    syslog-address: udp://localhost:1234
+#   syslog-address: udp://localhost:1234
     syslog-facility: daemon
     syslog-tag: "api-gateway"
 
